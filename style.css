@@ -1,0 +1,258 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+body {
+	font-family: "Space Grotesk", sans-serif;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.bg-primary {
+	background-color: var(--primary);
+}
+
+.rtl {
+	direction: rtl;
+}
+
+
+
+:root {
+	--full-screen: 100dvh;
+	--cover-background: linear-gradient(90deg, var(--primary) 80%, var(--secondary) 40%);
+	--primary: #F3B90E;
+	--secondary: #DEE2D7;
+	--white: #fff;
+	--black: #000;
+	--gray: #f0f0f0;
+	--dark: #101010;
+}
+
+/**
+ * 8. The @property rule in CSS allows you to define custom properties with specific characteristics, including syntax, inheritance, and an initial value.
+ *
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/@property
+ */
+@property --button-bg {
+	syntax: "<color>";
+	/* Use * to accept any value */
+	inherits: true;
+	initial-value: #121212;
+}
+
+body {
+	--button-bg: red;
+	/* Overriding the @property */
+}
+
+h2 {
+	font-size: 2rem;
+}
+
+/**
+ * 1. CSS Nesting: 
+ * The CSS nesting module allows you allows you to write nested CSS rules without any Pre-processor.
+ * Any @ (at-rule) whose body contains style rules can be nested inside another style rule using CSS nesting. 
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting/Using_CSS_nesting
+ */
+.slider {
+	height: var(--full-screen);
+	overflow-y: auto;
+	/** 
+	 * 2. Scroll Snap: 
+	 * This is the key to make the scroll snap work
+	 *
+	 * https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-type
+	 */
+	scroll-snap-type: y mandatory;
+	/* scroll-padding-top: 5rem; */
+	/* scroll-snap-stop: always; */
+
+
+	.slide {
+		height: var(--full-screen);
+		background-color: var(--secondary);
+		/** 2. (b): Scroll Snap align:
+		 * This is the key to make the scroll snap work
+		 *
+		 * https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-align
+		 * https://web.dev/articles/css-scroll-snap
+		 */
+		scroll-snap-align: start;
+		/* scroll-snap-align: center; */
+		/* scroll-snap-align: end; */
+
+		&:nth-child(odd) {
+			background-color: var(--gray);
+		}
+
+		&.cover {
+			background-image: var(--cover-background);
+			padding: 0;
+			display: flex;
+			align-items: flex-end;
+			justify-content: space-between;
+
+
+			.title {
+				font-size: clamp(4rem, 10vw, 10rem);
+				font-weight: 800;
+				text-wrap: balance;
+				text-align: left;
+				color: var(--white);
+				max-width: 20%;
+			}
+
+			.subtitle {
+				color: var(--dark);
+				font-size: 4rem;
+				text-wrap: balance;
+				/** 
+				 * 3. Writing Mode: The writing-mode CSS property sets whether lines of text are laid out horizontally or vertically
+				 * https://developer.mozilla.org/en-US/docs/Web/CSS/writing-mode
+				 */
+				writing-mode: vertical-rl;
+				text-align: center;
+				margin-block-start: 4rem;
+
+				/**
+				* 4. CSS @supports: The @supports CSS at-rule lets you apply CSS based on the browser's support for one or more specific CSS features.
+				* https://developer.mozilla.org/en-US/docs/Web/CSS/@supports
+				*/
+				@supports (writing-mode: sideways-lr) {
+					writing-mode: sideways-lr;
+					margin-block-end: 4rem;
+				}
+			}
+		}
+	}
+
+	/**
+	 * 5. CSS align-content: The CSS align-content property align items inside a block level element.
+	 *
+	 * https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
+	 */
+	.align-content {
+		align-content: center;
+		/* align-content: start; */
+		/* align-content: end; */
+	}
+
+	/**
+	 * 6. CSS clamp: The clamp() CSS function clamps a value between an upper and lower bound.
+	 *
+	 * https://developer.mozilla.org/en-US/docs/Web/CSS/clamp
+	 */
+	.clamp-font-size {
+		font-size: clamp(1rem, 4vw, 5rem);
+	}
+
+	/**
+	 * 7. CSS logical properties
+	 *
+	 * https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values
+	 */
+	.logical-spacing {
+		margin-block-end: 1rem;
+		padding-inline-start: 5rem;
+		/* padding-left: 5rem; */
+	}
+
+	.margin-block-end {
+		margin-block-end: 1rem;
+	}
+
+	.faq-image {
+		width: 600px;
+		height: 500px;
+		aspect-ratio: 2 / 1;
+		object-fit: cover;
+		border-radius: 4px;
+	}
+}
+
+/**
+* 8. The @property rule in CSS allows you to define custom properties with specific characteristics, including syntax, inheritance, and an initial value.
+*
+* https://developer.mozilla.org/en-US/docs/Web/CSS/@property
+*/
+.button {
+	background-color: var(--button-bg, #000);
+	color: var(--white);
+	font-size: 1rem;
+	padding: 1rem 2rem;
+	border: none;
+	border-radius: 0.5rem;
+	cursor: pointer;
+}
+
+.icon-heading {
+	position: relative;
+
+	&::after {
+		content: "😎";
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		z-index: -1;
+		font-size: 8rem;
+		opacity: 0.2;
+	}
+
+}
+.isolation {
+	/** 
+	 * 9. CSS isolation: The isolation CSS property determines whether an element must create a new stacking context.
+	 * https://developer.mozilla.org/en-US/docs/Web/CSS/isolation
+	 */
+	isolation: isolate;
+}
+
+dialog {
+	margin: auto;
+	padding: 0;
+	border: none;
+}
+
+::backdrop {
+	background-color: rgba(0, 0, 0, 0.8);
+	opacity: 0.75;
+}
+
+.dialog-content {
+	background-color: var(--white);
+	padding: 1rem;
+	border-radius: 0.5rem;
+	text-align: center;
+	
+
+	h3 {
+		margin-block-end: 1rem;
+		padding: 1rem;
+		border-radius: 4px;
+		color: var(--white);
+
+	}
+
+	img {
+		object-fit: contain;
+	}
+
+	button {
+		margin-block-start: 1rem;
+	}
+}
+
+.bye {
+	margin-block-start: 1rem;
+	font-size: 3rem;
+}

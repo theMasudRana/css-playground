@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CSS Playground: Experimenting with the Newest Features!</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="slider">
+			<div class="slide cover">
+				<h1 class="title">CSS Playground:</h1>
+				<div class="subtitle-wrapper">
+					<h2 class="subtitle">Experimenting with the CSS Features!</h2>
+					<p>by: <a href="https://masudrana.me/" target="_blank">Masud Rana</a></p>
+				</div>
+			</div>
+			<div class="slide align-content text-center">
+				<h2 class="clamp-font-size">Align content & Clamp function</h2>
+			</div>
+			<div class="slide align-content">
+				<h2 class="text-left logical-spacing bg-primary">Left to right text</h2>
+				<h2 class="rtl logical-spacing bg-primary">هامش وباءت المعاهدات انه, قامت تنفّس كل بعض. ان الأرض الأوروبية الإقتصادي تعد</h2>
+			</div>
+			<div class="slide align-content text-center">
+				<h2 class="margin-block-end">@property - CSS</h2>
+				<button class="button show-button">
+					Browser support
+				</button>
+			</div>
+			<div class="slide align-content text-center imog isolation">
+				<h2 class="margin-block-end icon-heading">Isolation</h2>
+				<p>The isolation CSS property determines whether an element must create a new stacking context.</p>
+			</div>
+			<div class="slide align-content text-center">
+				<h2 class="margin-block-end">Frequently Asked Questions</h2>
+				<img class="faq-image" src="./images/2.jpeg" alt="">
+				<p class="bye">👋 👋</p>
+			</div>
+		</div>
+	</div>
+
+	<dialog>
+		<div class="dialog-content">
+			<h3 class="bg-primary">@property Browser support</h3>
+			<img src="./images/1.jpg" width="100%" height="400" alt="">
+			<p><a href="https://caniuse.com/?search=%40property" target="_blank">Can I use: Global	89.6%</a></p>
+			<button class="button close-button">Close Dialog</button>
+		</div>
+	</dialog>
+	<script>
+		const dialog = document.querySelector("dialog");
+		const showDialog = document.querySelector(".show-button");
+		const closeDialog = document.querySelector(".close-button");
+
+		// Show the dialog
+		showDialog.addEventListener("click", () => {
+			dialog.showModal();
+		});
+
+		// Close the dialog
+		closeDialog.addEventListener("click", () => {
+			dialog.close();
+		});
+	</script>
+</body>
+
+</html>
