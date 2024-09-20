@@ -60,7 +60,7 @@ h2 {
 /**
  * 1. CSS Nesting: 
  * The CSS nesting module allows you allows you to write nested CSS rules without any Pre-processor.
- * Any @ (at-rule) whose body contains style rules can be nested inside another style rule using CSS nesting. 
+ * Any @ (at-rule) whose body contains style rules can be nested inside another style rule using CSS nesting.  87.47% of browsers support this feature.
  * https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting/Using_CSS_nesting
  */
 .slider {
