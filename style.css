@@ -44,7 +44,7 @@ body {
 @property --button-bg {
 	syntax: "<color>";
 	/* Use * to accept any value */
-	inherits: true;
+	inherits: false;
 	initial-value: #121212;
 }
 
@@ -101,7 +101,6 @@ h2 {
 			align-items: flex-end;
 			justify-content: space-between;
 
-
 			.title {
 				font-size: clamp(4rem, 10vw, 10rem);
 				font-weight: 800;
@@ -147,7 +146,7 @@ h2 {
 	}
 
 	/**
-	 * 6. CSS clamp: The clamp() CSS function clamps a value between an upper and lower bound.
+	 * 6. CSS clamp: The clamp(min, default, max) CSS function clamps a value between an upper and lower bound.
 	 *
 	 * https://developer.mozilla.org/en-US/docs/Web/CSS/clamp
 	 */
